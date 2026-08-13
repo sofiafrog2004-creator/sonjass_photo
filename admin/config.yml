@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: sofiafrog2004-creator/sonjass_photo
   branch: main
 
 media_folder: "images/uploads"
