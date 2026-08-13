@@ -8,6 +8,7 @@ public_folder: "/images/uploads"
 collections:
   - label: "Сайт"
     name: "site"
+
     files:
       - label: "Основная информация"
         name: "main"
@@ -38,42 +39,56 @@ collections:
           - { label: "Instagram", name: "instagram", widget: "string" }
 
 
-          # Услуги
+          # УСЛУГИ
           - label: "Услуги"
             name: "services"
             widget: "list"
+
             fields:
               - { label: "Номер", name: "number", widget: "string" }
               - { label: "Название", name: "title", widget: "string" }
               - { label: "Описание", name: "text", widget: "text" }
 
 
-          # Категории
+          # КАТЕГОРИИ
           - label: "Категории"
             name: "categories"
             widget: "list"
+
             fields:
               - { label: "Название", name: "name", widget: "string" }
-              - { label: "Код категории", name: "slug", widget: "string" }
-              - { label: "Фото обложки", name: "image", widget: "image" }
+
+              - { 
+                  label: "Код категории",
+                  name: "slug",
+                  widget: "string"
+                }
+
+              - {
+                  label: "Обложка раздела",
+                  name: "cover",
+                  widget: "image"
+                }
 
 
-          # Работы
+          # РАБОТЫ
           - label: "Работы"
             name: "works"
             widget: "list"
 
             fields:
 
-              - { 
-                  label: "Фото", 
-                  name: "image", 
-                  widget: "image" 
+              - {
+                  label: "Фото",
+                  name: "image",
+                  widget: "image"
                 }
+
 
               - label: "Категория"
                 name: "category"
                 widget: "select"
+
                 options:
                   - { label: "Репортаж", value: "reportage" }
                   - { label: "Портреты", value: "portrait" }
@@ -81,25 +96,37 @@ collections:
                   - { label: "Креатив", value: "creative" }
                   - { label: "Мероприятия", value: "events" }
 
-              - { 
-                  label: "Описание фото", 
-                  name: "alt", 
-                  widget: "string" 
+
+              - {
+                  label: "Описание фото",
+                  name: "alt",
+                  widget: "string"
                 }
 
-              - { 
-                  label: "Показывать на главной", 
-                  name: "featured", 
+
+              - {
+                  label: "Показывать на главной",
+                  name: "featured",
                   widget: "boolean",
                   default: false,
                   required: false
                 }
 
 
-          # Отзывы
+          # ОТЗЫВЫ
           - label: "Отзывы"
             name: "reviews"
             widget: "list"
+
             fields:
-              - { label: "Текст", name: "text", widget: "text" }
-              - { label: "Автор", name: "author", widget: "string" }
+              - {
+                  label: "Текст",
+                  name: "text",
+                  widget: "text"
+                }
+
+              - {
+                  label: "Автор",
+                  name: "author",
+                  widget: "string"
+                }
