@@ -72,6 +72,7 @@ collections:
 
 
           # РАБОТЫ
+                    # РАБОТЫ
           - label: "Работы"
             name: "works"
             widget: "list"
@@ -110,29 +111,14 @@ collections:
                   widget: "boolean",
                   default: false,
                   required: false
-                }              - {
+                }
+
+
+              - {
                   label: "Порядок на главной",
                   name: "order",
                   widget: "number",
                   default: 99,
                   required: false
-                }
-
-
-          # ОТЗЫВЫ
+                }          # ОТЗЫВЫ
           - label: "Отзывы"
-            name: "reviews"
-            widget: "list"
-
-            fields:
-              - {
-                  label: "Текст",
-                  name: "text",
-                  widget: "text"
-                }
-
-              - {
-                  label: "Автор",
-                  name: "author",
-                  widget: "string"
-                }
