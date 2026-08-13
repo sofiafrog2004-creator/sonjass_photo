@@ -1,0 +1,34 @@
+{
+  "photos": [
+    {
+      "image": "/images/uploads/sjs00518-улучшено-ум.-шума-2000-3.jpg",
+      "category": "creative",
+      "alt": "Креативная съёмка",
+      "featured": false
+    },
+    {
+      "image": "/images/uploads/sjs08677.jpg",
+      "category": "portrait",
+      "alt": "Портрет",
+      "featured": false
+    },
+    {
+      "image": "/images/uploads/sjs03869-улучшено-ум.-шума-jpg-2.jpg",
+      "category": "events",
+      "alt": "Мероприятие",
+      "featured": false
+    },
+    {
+      "image": "/images/uploads/sjs05987.jpg",
+      "category": "portrait",
+      "alt": "Портрет",
+      "featured": false
+    },
+    {
+      "image": "/images/uploads/dsc04750.jpg",
+      "category": "portrait",
+      "alt": "Портрет",
+      "featured": false
+    }
+  ]
+}
