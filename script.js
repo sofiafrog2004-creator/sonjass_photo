@@ -1,496 +1,425 @@
 async function loadSite(){
 
-  const res = await fetch('content/site.json', {
-    cache:'no-store'
-  });
+try {
 
-  const d = await res.json();
+const res = await fetch('/content/site.json?t=' + Date.now());
 
-  const $ = id => document.getElementById(id);
+if(!res.ok){
+throw new Error('site.json не найден');
+}
 
+const d = await res.json();
 
-  // ==========================
-  // ОСНОВНАЯ ИНФОРМАЦИЯ
-  // ==========================
 
-  $('brand').innerHTML = d.brand.replace('_','<br>');
+const $ = id => document.getElementById(id);
 
-  $('city').textContent = d.city;
 
-  $('heroTitle').innerHTML = d.heroTitle
-    .replace(' ','<br>')
-    .replace(' ','<br>');
+// ======================
+// ОСНОВА
+// ======================
 
-  $('heroText').textContent = d.heroText;
+$('brand').innerHTML =
+(d.brand || '').replace('_','<br>');
 
-  $('heroImage').src = d.heroImage;
+$('city').textContent =
+d.city || '';
 
+$('heroTitle').innerHTML =
+(d.heroTitle || '')
+.replace(' ','<br>')
+.replace(' ','<br>');
 
-  $('aboutImage').src = d.aboutImage;
+$('heroText').textContent =
+d.heroText || '';
 
-  $('aboutTitle').textContent = d.aboutTitle;
+$('heroImage').src =
+d.heroImage || '';
 
-  $('aboutRole').textContent = d.aboutRole;
 
-  $('aboutText').textContent = d.aboutText;
 
+$('aboutImage').src =
+d.aboutImage || '';
 
-  $('years').textContent = d.years;
+$('aboutTitle').textContent =
+d.aboutTitle || '';
 
-  $('yearsLabel').textContent = d.yearsLabel;
+$('aboutRole').textContent =
+d.aboutRole || '';
 
-  $('love').textContent = d.love;
+$('aboutText').textContent =
+d.aboutText || '';
 
-  $('loveLabel').textContent = d.loveLabel;
 
 
+$('years').textContent =
+d.years || '';
 
-  // ==========================
-  // ДАННЫЕ
-  // ==========================
+$('yearsLabel').textContent =
+d.yearsLabel || '';
 
-  const works = d.works || [];
+$('love').textContent =
+d.love || '';
 
-  const categories = d.categories || [];
+$('loveLabel').textContent =
+d.loveLabel || '';
 
 
 
-  // ==========================
-  // ЛЕНТА ФОТО
-  // ==========================
+// ======================
+// ФОТО
+// ======================
 
 
-  $('filmStrip').innerHTML = works
-    .map(w=>`
+const works = d.works || [];
 
-      <img 
-        src="${w.image}"
-        alt="${w.alt || ''}"
-      >
 
-    `)
-    .join('');
 
+$('filmStrip').innerHTML =
+works.map(w=>`
 
+<img src="${w.image}">
 
-  // ==========================
-  // ИЗБРАННЫЕ ФОТО
-  // ==========================
+`).join('');
 
 
-  const featuredWorks =
-    works.filter(w=>w.featured).length
-    ?
-    works.filter(w=>w.featured)
-    :
-    works;
 
+$('selectedGrid').innerHTML =
+works.map((w,i)=>`
 
+<button class="photo-card"
+data-full="${w.image}">
 
-  $('selectedGrid').innerHTML =
-    featuredWorks
-    .map((w,i)=>`
+<img src="${w.image}"
+alt="${w.alt || ''}">
 
-      <button
-        class="photo-card ${i===0 || i===4 ? 'tall':''}"
-        data-full="${w.image}"
-      >
+</button>
 
-        <img
-          src="${w.image}"
-          alt="${w.alt || ''}"
-        >
+`).join('');
 
-      </button>
 
-    `)
-    .join('');
 
+$('galleryGrid').innerHTML =
+works.map(w=>`
 
+<button class="gallery-item"
+data-cat="${w.category}"
+data-full="${w.image}">
 
+<img src="${w.image}"
+alt="${w.alt || ''}">
 
-  // ==========================
-  // ГАЛЕРЕЯ
-  // ==========================
+</button>
 
+`).join('');
 
-  renderGallery(works);
 
 
 
-  // ==========================
-  // КАТЕГОРИИ
-  // ==========================
+// ======================
+// КАТЕГОРИИ
+// ======================
 
 
-  $('categories').innerHTML =
-    categories
-    .map(c=>`
+const categories =
+d.categories || [];
 
-      <article 
-        class="category-card"
-        data-filter="${c.slug}"
-      >
 
-        <img src="${c.image}" alt="${c.name}">
+$('categories').innerHTML =
+categories.map(c=>`
 
-        <h3>${c.name}</h3>
+<div class="category-card"
+data-filter="${c.slug}">
 
-      </article>
+<img src="${c.image}">
 
-    `)
-    .join('');
+<h3>${c.name}</h3>
 
+</div>
 
+`).join('');
 
-  // ==========================
-  // ФИЛЬТРЫ
-  // ==========================
 
 
-  const catNames =
-    Object.fromEntries(
-      categories.map(c=>[
-        c.slug,
-        c.name
-      ])
-    );
 
+// ======================
+// УСЛУГИ
+// ======================
 
 
-  $('filters').innerHTML =
+$('servicesGrid').innerHTML =
+(d.services || [])
+.map(s=>`
 
-    `
-    <button 
-      class="active"
-      data-gallery-filter="all"
-    >
-      ВСЕ
-    </button>
-    `
+<article>
 
-    +
+<span>${s.number}</span>
 
-    categories.map(c=>`
+<h3>${s.title}</h3>
 
-      <button
-        data-gallery-filter="${c.slug}"
-      >
-        ${c.name}
-      </button>
+<p>${s.text}</p>
 
-    `).join('');
+</article>
 
+`).join('');
 
 
-  // ==========================
-  // УСЛУГИ
-  // ==========================
 
 
-  $('servicesGrid').innerHTML =
-    (d.services || [])
-    .map(s=>`
+// ======================
+// ФИЛЬТРЫ
+// ======================
 
-      <article>
 
-        <span>${s.number}</span>
+$('filters').innerHTML =
 
-        <h3>${s.title}</h3>
+`
+<button class="active"
+data-gallery-filter="all">
+ВСЕ
+</button>
+`
 
-        <p>${s.text}</p>
++
 
-      </article>
+categories.map(c=>`
 
-    `)
-    .join('');
+<button data-gallery-filter="${c.slug}">
+${c.name}
+</button>
 
+`).join('');
 
 
-  // ==========================
-  // ОТЗЫВЫ
-  // ==========================
 
 
-  $('reviewsGrid').innerHTML =
-    (d.reviews || [])
-    .map(r=>`
+// ======================
+// ОТЗЫВЫ
+// ======================
 
-      <article class="review">
 
-        <div class="quote">“</div>
+$('reviewsGrid').innerHTML =
 
-        <blockquote>
-          ${r.text.replace(/\n/g,'<br>')}
-        </blockquote>
+(d.reviews || [])
+.map(r=>`
 
-        <p>
-          — ${r.author}
-        </p>
+<article class="review">
 
-      </article>
+<div class="quote">
+“
+</div>
 
-    `)
-    .join('');
+<blockquote>
+${r.text}
+</blockquote>
 
+<p>
+— ${r.author}
+</p>
 
+</article>
 
+`).join('');
 
-  // ==========================
-  // КОНТАКТЫ
-  // ==========================
 
 
-  $('email').href =
-    `mailto:${d.email}`;
 
-  $('email').textContent =
-    d.email;
+// ======================
+// КОНТАКТЫ
+// ======================
 
 
-  $('telegram').href =
-    d.telegram;
+const email =
+document.getElementById('email');
 
 
-  $('instagram').href =
-    d.instagram;
+if(email){
 
+email.href =
+'mailto:' + d.email;
 
+email.textContent =
+d.email;
 
-  initInteractions();
+}
+
+
+const telegram =
+document.getElementById('telegram');
+
+
+if(telegram){
+
+telegram.href =
+d.telegram;
+
+}
+
+
+
+const instagram =
+document.getElementById('instagram');
+
+
+if(instagram){
+
+instagram.href =
+d.instagram;
 
 }
 
 
 
 
-// ==========================
-// ГАЛЕРЕЯ
-// ==========================
+initInteractions();
 
 
-function renderGallery(works){
+}
 
+catch(e){
 
-  const gallery =
-    document.getElementById('galleryGrid');
+console.error(
+'Ошибка загрузки:',
+e
+);
 
-
-  if(!gallery) return;
-
-
-
-  gallery.innerHTML =
-    works
-    .map(w=>`
-
-      <button
-        class="gallery-item"
-        data-cat="${w.category}"
-        data-full="${w.image}"
-      >
-
-        <img
-          src="${w.image}"
-          alt="${w.alt || ''}"
-        >
-
-      </button>
-
-    `)
-    .join('');
+}
 
 }
 
 
 
-
-// ==========================
-// ИНТЕРАКТИВ
-// ==========================
 
 
 function initInteractions(){
 
 
-  const nav =
-    document.querySelector('#nav');
 
+// фильтры
 
-  const menu =
-    document.querySelector('.menu-btn');
+document
+.querySelectorAll('[data-gallery-filter]')
+.forEach(btn=>{
 
 
-  menu?.addEventListener(
-    'click',
-    ()=>nav.classList.toggle('open')
-  );
+btn.onclick=()=>{
 
 
+document
+.querySelectorAll('[data-gallery-filter]')
+.forEach(b=>
+b.classList.remove('active')
+);
 
-  document
-  .querySelectorAll('[data-gallery-filter]')
-  .forEach(btn=>{
 
+btn.classList.add('active');
 
-    btn.addEventListener(
-      'click',
-      ()=>{
 
+const filter =
+btn.dataset.galleryFilter;
 
-        document
-        .querySelectorAll('[data-gallery-filter]')
-        .forEach(b=>
-          b.classList.remove('active')
-        );
 
 
-        btn.classList.add('active');
+document
+.querySelectorAll('.gallery-item')
+.forEach(item=>{
 
 
-        const filter =
-          btn.dataset.galleryFilter;
+item.style.display =
+filter==='all' ||
+item.dataset.cat===filter
+?
+''
+:
+'none';
 
 
+});
 
-        document
-        .querySelectorAll('.gallery-item')
-        .forEach(item=>{
 
+};
 
-          item.style.display =
-          filter==='all' ||
-          item.dataset.cat===filter
-          ?
-          ''
-          :
-          'none';
 
+});
 
-        });
 
 
-      }
-    );
 
+// категории
 
-  });
+document
+.querySelectorAll('[data-filter]')
+.forEach(card=>{
 
 
+card.onclick=()=>{
 
-  document
-  .querySelectorAll('[data-filter]')
-  .forEach(card=>{
 
+document
+.querySelector(
+`[data-gallery-filter="${card.dataset.filter}"]`
+)
+?.click();
 
-    card.addEventListener(
-      'click',
-      ()=>{
 
+};
 
-        const btn =
-        document.querySelector(
-          `[data-gallery-filter="${card.dataset.filter}"]`
-        );
 
+});
 
-        btn?.click();
 
 
-      }
-    );
 
+// lightbox
 
-  });
 
+const box =
+document.querySelector('#lightbox');
 
+const img =
+document.querySelector('#lightbox-img');
 
-  // LIGHTBOX
 
 
-  const box =
-    document.querySelector('#lightbox');
+document
+.querySelectorAll('[data-full]')
+.forEach(el=>{
 
 
-  const img =
-    document.querySelector('#lightbox-img');
+el.onclick=()=>{
 
 
+img.src =
+el.dataset.full;
 
-  document
-  .querySelectorAll('[data-full]')
-  .forEach(item=>{
 
+box.classList.add('open');
 
-    item.addEventListener(
-      'click',
-      ()=>{
+document.body.style.overflow='hidden';
 
 
-        img.src =
-        item.dataset.full;
+};
 
 
-        box.classList.add('open');
+});
 
 
-        document.body.style.overflow='hidden';
 
+document
+.querySelector('.lightbox-close')
+?.addEventListener('click',()=>{
 
-      }
-    );
 
+box.classList.remove('open');
 
-  });
+document.body.style.overflow='';
 
 
+});
 
-  document
-  .querySelector('.lightbox-close')
-  ?.addEventListener(
-    'click',
-    ()=>{
-
-
-      box.classList.remove('open');
-
-      document.body.style.overflow='';
-
-
-    }
-  );
-
-
-
-  document.onkeydown =
-  e=>{
-
-
-    if(e.key==='Escape'){
-
-      box.classList.remove('open');
-
-      document.body.style.overflow='';
-
-    }
-
-
-  };
 
 
 }
 
 
 
-// ==========================
-// ЗАПУСК
-// ==========================
-
-
-loadSite()
-.catch(err=>
-  console.error(
-    'Ошибка загрузки сайта:',
-    err
-  )
-);
+loadSite();
