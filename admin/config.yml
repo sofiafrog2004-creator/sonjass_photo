@@ -37,6 +37,8 @@ collections:
           - { label: "Telegram", name: "telegram", widget: "string" }
           - { label: "Instagram", name: "instagram", widget: "string" }
 
+
+          # Услуги
           - label: "Услуги"
             name: "services"
             widget: "list"
@@ -45,23 +47,56 @@ collections:
               - { label: "Название", name: "title", widget: "string" }
               - { label: "Описание", name: "text", widget: "text" }
 
+
+          # Категории
           - label: "Категории"
             name: "categories"
             widget: "list"
             fields:
               - { label: "Название", name: "name", widget: "string" }
               - { label: "Код категории", name: "slug", widget: "string" }
-              - { label: "Фото", name: "image", widget: "image" }
+              - { label: "Фото обложки", name: "image", widget: "image" }
 
+
+          # Работы
           - label: "Работы"
             name: "works"
             widget: "list"
-            fields:
-              - { label: "Фото", name: "image", widget: "image" }
-              - { label: "Категория", name: "category", widget: "string" }
-              - { label: "Описание фото", name: "alt", widget: "string" }
-              - { label: "Показывать на главной", name: "featured", widget: "boolean", default: false }
 
+            fields:
+
+              - { 
+                  label: "Фото", 
+                  name: "image", 
+                  widget: "image" 
+                }
+
+              - label: "Категория"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Репортаж", value: "reportage" }
+                  - { label: "Портреты", value: "portrait" }
+                  - { label: "Студия", value: "studio" }
+                  - { label: "Креатив", value: "creative" }
+                  - { label: "Мероприятия", value: "events" }
+
+              - { 
+                  label: "Описание фото", 
+                  name: "alt", 
+                  widget: "string" 
+                }
+
+              - { 
+                  label: "Показывать на главной", 
+                  name: "featured", 
+                  widget: "boolean",
+                  default: false,
+                  required: false
+                }
+
+
+          # Отзывы
           - label: "Отзывы"
             name: "reviews"
             widget: "list"
