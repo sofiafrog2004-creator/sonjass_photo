@@ -45,10 +45,9 @@ async function loadSite(){
 
 
   // Фото на главной
-  const featuredWorks = works.some(w => w.featured)
-    ? works.filter(w => w.featured)
-    : works.slice(0,5);
-
+const featuredWorks = works.filter(w => w.featured).length
+  ? works.filter(w => w.featured)
+  : works.slice(0,5);
 
 
   $('filmStrip').innerHTML = works
