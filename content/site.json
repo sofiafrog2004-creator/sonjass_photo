@@ -1,0 +1,104 @@
+{
+  "brand": "Sonjass_Photo",
+  "city": "ФОТОГРАФ В МОСКВЕ",
+  "heroTitle": "ЭМОЦИИ В КАДРЕ",
+  "heroText": "Репортаж, портреты, мероприятия и креативные съёмки для людей и брендов",
+  "heroImage": "/images/hero.jpg",
+  "aboutTitle": "ПРИВЕТ, Я СОФЬЯ",
+  "aboutRole": "ФОТОГРАФ ИЗ МОСКВЫ",
+  "aboutText": "Более 7 лет снимаю людей, события и истории. Работаю в сфере культуры, сотрудничаю с брендами, театрами, музыкантами и творческими проектами. Для меня важно поймать момент и передать настоящие эмоции — без лишней постановки.",
+  "aboutImage": "/images/about.jpg",
+  "years": "07",
+  "yearsLabel": "ЛЕТ В ФОТОГРАФИИ",
+  "love": "∞",
+  "loveLabel": "ЛЮБОВЬ К ДЕЛУ",
+  "email": "hello@sofia-photo.ru",
+  "telegram": "https://t.me/",
+  "instagram": "https://instagram.com/",
+  "reviews": [
+    {
+      "text": "Софья умеет быть незаметной в нужный момент и при этом ловить именно те кадры, которые хочется сохранить.",
+      "author": "КЛИЕНТ"
+    },
+    {
+      "text": "Очень живые фотографии. Никакой натянутости — будто снова проживаешь этот день.",
+      "author": "КЛИЕНТ"
+    }
+  ],
+  "services": [
+    {
+      "number": "01",
+      "title": "ПОРТРЕТЫ",
+      "text": "Индивидуальные и парные съёмки, личный бренд, fashion."
+    },
+    {
+      "number": "02",
+      "title": "РЕПОРТАЖ",
+      "text": "События, конференции, культурные проекты и живые истории."
+    },
+    {
+      "number": "03",
+      "title": "БРЕНДЫ",
+      "text": "Контент для социальных сетей, кампаний и презентаций."
+    },
+    {
+      "number": "04",
+      "title": "МЕРОПРИЯТИЯ",
+      "text": "Концерты, фестивали, открытия и частные события."
+    }
+  ],
+  "categories": [
+    {
+      "name": "РЕПОРТАЖ",
+      "slug": "reportage",
+      "image": "/images/reportage.jpg"
+    },
+    {
+      "name": "ПОРТРЕТЫ",
+      "slug": "portrait",
+      "image": "/images/portraits.jpg"
+    },
+    {
+      "name": "СТУДИЯ",
+      "slug": "studio",
+      "image": "/images/studio.jpg"
+    },
+    {
+      "name": "КРЕАТИВ",
+      "slug": "creative",
+      "image": "/images/creative.jpg"
+    },
+    {
+      "name": "МЕРОПРИЯТИЯ",
+      "slug": "events",
+      "image": "/images/events.jpg"
+    }
+  ],
+  "works": [
+    {
+      "image": "/images/work1.jpg",
+      "category": "creative",
+      "alt": "Креативная съёмка"
+    },
+    {
+      "image": "/images/work2.jpg",
+      "category": "portrait",
+      "alt": "Портрет"
+    },
+    {
+      "image": "/images/work3.jpg",
+      "category": "events",
+      "alt": "Мероприятие"
+    },
+    {
+      "image": "/images/work4.jpg",
+      "category": "portrait",
+      "alt": "Портрет"
+    },
+    {
+      "image": "/images/work5.jpg",
+      "category": "portrait",
+      "alt": "Портрет"
+    }
+  ]
+}
