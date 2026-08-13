@@ -110,6 +110,12 @@ collections:
                   widget: "boolean",
                   default: false,
                   required: false
+                }              - {
+                  label: "Порядок на главной",
+                  name: "order",
+                  widget: "number",
+                  default: 99,
+                  required: false
                 }
 
 
