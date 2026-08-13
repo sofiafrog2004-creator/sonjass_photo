@@ -6,7 +6,7 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - label: "Сайт"
+  - label: "Главная"
     name: "site"
     files:
       - label: "Основная информация"
@@ -41,21 +41,22 @@ collections:
               - { label: "Название", name: "title", widget: "string" }
               - { label: "Описание", name: "text", widget: "text" }
 
-          - label: "Категории"
+          - label: "Разделы портфолио"
             name: "categories"
             widget: "list"
             fields:
-              - { label: "Название", name: "name", widget: "string" }
+              - { label: "Название раздела", name: "name", widget: "string" }
               - { label: "Код категории", name: "slug", widget: "string" }
-              - { label: "Фото", name: "image", widget: "image" }
+              - { label: "Обложка раздела", name: "image", widget: "image" }
 
-          - label: "Работы"
+          - label: "Фотографии"
             name: "works"
             widget: "list"
             fields:
-              - { label: "Фото", name: "image", widget: "image" }
-              - { label: "Категория", name: "category", widget: "string" }
-              - { label: "Описание фото", name: "alt", widget: "string" }
+              - { label: "Фотография", name: "image", widget: "image" }
+              - { label: "Раздел", name: "category", widget: "string" }
+              - { label: "Описание фотографии", name: "alt", widget: "string", required: false }
+              - { label: "Показывать на главной", name: "featured", widget: "boolean", default: false, required: false }
 
           - label: "Отзывы"
             name: "reviews"
