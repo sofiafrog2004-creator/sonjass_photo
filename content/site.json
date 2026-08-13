@@ -6,27 +6,32 @@
     {
       "image": "/images/uploads/sjs00518-улучшено-ум.-шума-2000-3.jpg",
       "category": "creative",
-      "alt": "Креативная съёмка"
+      "alt": "Креативная съёмка",
+      "order": ""
     },
     {
       "image": "/images/uploads/sjs08677.jpg",
       "category": "portrait",
-      "alt": "Портрет"
+      "alt": "Портрет",
+      "order": 1
     },
     {
       "image": "/images/uploads/sjs03869-улучшено-ум.-шума-jpg-2.jpg",
       "category": "events",
-      "alt": "Мероприятие"
+      "alt": "Мероприятие",
+      "order": 2
     },
     {
       "image": "/images/uploads/sjs05987.jpg",
       "category": "portrait",
-      "alt": "Портрет"
+      "alt": "Портрет",
+      "order": 4
     },
     {
       "image": "/images/uploads/dsc04750.jpg",
       "category": "portrait",
-      "alt": "Портрет"
+      "alt": "Портрет",
+      "order": 3
     }
   ],
   "aboutRole": "ФОТОГРАФ ИЗ МОСКВЫ",
@@ -73,27 +78,32 @@
     {
       "name": "РЕПОРТАЖ",
       "slug": "reportage",
-      "image": "/images/uploads/sjs09869-улучшено-ум.-шума.jpg"
+      "image": "/images/uploads/sjs09869-улучшено-ум.-шума.jpg",
+      "cover": "/images/uploads/sjs09869-улучшено-ум.-шума.jpg"
     },
     {
       "name": "ПОРТРЕТЫ",
       "slug": "portrait",
-      "image": "/images/uploads/sjs06418.jpg"
+      "image": "/images/uploads/sjs06418.jpg",
+      "cover": "/images/uploads/dsc04750.jpg"
     },
     {
       "name": "СТУДИЯ",
       "slug": "studio",
-      "image": "/images/uploads/dsc00929.jpg"
+      "image": "/images/uploads/dsc00929.jpg",
+      "cover": "/images/uploads/dsc00929.jpg"
     },
     {
       "name": "КРЕАТИВ",
       "slug": "creative",
-      "image": "/images/uploads/sjs05282.jpg"
+      "image": "/images/uploads/sjs05282.jpg",
+      "cover": "/images/uploads/sjs05282.jpg"
     },
     {
       "name": "МЕРОПРИЯТИЯ",
       "slug": "events",
-      "image": "/images/uploads/sjs04489-улучшено-ум.-шума.jpg"
+      "image": "/images/uploads/sjs04489-улучшено-ум.-шума.jpg",
+      "cover": "/images/uploads/sjs04489-улучшено-ум.-шума.jpg"
     }
   ],
   "email": "ouramanetgreen@gmail.com",
