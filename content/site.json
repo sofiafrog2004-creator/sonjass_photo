@@ -4,27 +4,27 @@
   "loveLabel": "ЛЮБОВЬ К ДЕЛУ",
   "works": [
     {
-      "image": "/images/work1.jpg",
+      "image": "/images/uploads/sjs00518-улучшено-ум.-шума-2000-3.jpg",
       "category": "creative",
       "alt": "Креативная съёмка"
     },
     {
-      "image": "/images/work2.jpg",
+      "image": "/images/uploads/sjs08677.jpg",
       "category": "portrait",
       "alt": "Портрет"
     },
     {
-      "image": "/images/work3.jpg",
+      "image": "/images/uploads/sjs03869-улучшено-ум.-шума-jpg-2.jpg",
       "category": "events",
       "alt": "Мероприятие"
     },
     {
-      "image": "/images/work4.jpg",
+      "image": "/images/uploads/sjs05987.jpg",
       "category": "portrait",
       "alt": "Портрет"
     },
     {
-      "image": "/images/work5.jpg",
+      "image": "/images/uploads/dsc04750.jpg",
       "category": "portrait",
       "alt": "Портрет"
     }
@@ -34,7 +34,7 @@
   "brand": "Sonjass_Photo",
   "city": "ФОТОГРАФ В МОСКВЕ",
   "aboutTitle": "ПРИВЕТ, Я СОФЬЯ",
-  "aboutImage": "/images/about.jpg",
+  "aboutImage": "/images/uploads/sjs02472-улучшено-ум.-шума.jpg",
   "love": "∞",
   "instagram": "https://instagram.com/sonjass_photoo?igsh=MXQ5MG9iZXFyNGUxYQ%3D%3D&utm_source=qr",
   "years": "05",
@@ -47,33 +47,53 @@
     {
       "text": "Очень живые фотографии. Никакой натянутости — будто снова проживаешь этот день!",
       "author": "КЛИЕНТ"
+    },
+    {
+      "text": "Спасибо Софье за фотографии министра Министерства молодежи Херсонской области на образовательной программе! Министр очень доволен!",
+      "author": "Пресс-служба Министерства молодежи ХО"
+    },
+    {
+      "text": "Это просто афигенно! Я в приятном шоке от фотографий - вы смогли показать меня настоящей и очень красивой!",
+      "author": "Клиент"
+    },
+    {
+      "text": "Спасибо за фотографию для обложки! Ты делаешь шедевры!",
+      "author": "Twins Kovl"
+    },
+    {
+      "text": "Соня, привет!\n\nБольшое тебе спасибо от меня, как от коллеги, за портретки амбассадорам. Своими я восхищена, даже больше - удивлена, что я «получилась» на них. \nИскренняя благодарность и лучи света посылаю тебе из Тулы!",
+      "author": "Клиент"
+    },
+    {
+      "text": "Партнер образовательной программы хочет забрать себе фотографии в пост о ее проведении! Спасибо большое!",
+      "author": "Клиент"
     }
   ],
   "categories": [
     {
       "name": "РЕПОРТАЖ",
       "slug": "reportage",
-      "image": "/images/reportage.jpg"
+      "image": "/images/uploads/sjs09869-улучшено-ум.-шума.jpg"
     },
     {
       "name": "ПОРТРЕТЫ",
       "slug": "portrait",
-      "image": "/images/portraits.jpg"
+      "image": "/images/uploads/sjs06418.jpg"
     },
     {
       "name": "СТУДИЯ",
       "slug": "studio",
-      "image": "/images/studio.jpg"
+      "image": "/images/uploads/dsc00929.jpg"
     },
     {
       "name": "КРЕАТИВ",
       "slug": "creative",
-      "image": "/images/creative.jpg"
+      "image": "/images/uploads/sjs05282.jpg"
     },
     {
       "name": "МЕРОПРИЯТИЯ",
       "slug": "events",
-      "image": "/images/events.jpg"
+      "image": "/images/uploads/sjs04489-улучшено-ум.-шума.jpg"
     }
   ],
   "email": "ouramanetgreen@gmail.com",
