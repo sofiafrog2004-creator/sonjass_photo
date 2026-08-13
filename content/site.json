@@ -1,49 +1,57 @@
 {
   "telegram": "https://t.me/sonjassphoto",
-  "heroImage": "/images/uploads/sjs01713-улучшено-ум.-шума.jpg",
+  "heroImage": "/images/hero.jpg",
   "loveLabel": "ЛЮБОВЬ К ДЕЛУ",
+
   "works": [
     {
-      "image": "/images/uploads/sjs00518-улучшено-ум.-шума-2000-3.jpg",
+      "image": "/images/work1.jpg",
       "category": "creative",
       "alt": "Креативная съёмка",
-      "order": ""
-    },
-    {
-      "image": "/images/uploads/sjs08677.jpg",
-      "category": "portrait",
-      "alt": "Портрет",
       "order": 1
     },
     {
-      "image": "/images/uploads/sjs03869-улучшено-ум.-шума-jpg-2.jpg",
-      "category": "events",
-      "alt": "Мероприятие",
+      "image": "/images/portrait-1.jpg",
+      "category": "portrait",
+      "alt": "Портрет",
       "order": 2
     },
     {
-      "image": "/images/uploads/sjs05987.jpg",
+      "image": "/images/event-1.jpg",
+      "category": "events",
+      "alt": "Мероприятие",
+      "order": 3
+    },
+    {
+      "image": "/images/portrait-2.jpg",
       "category": "portrait",
       "alt": "Портрет",
       "order": 4
     },
     {
-      "image": "/images/uploads/dsc04750.jpg",
+      "image": "/images/work2.jpg",
       "category": "portrait",
       "alt": "Портрет",
-      "order": 3
+      "order": 5
     }
   ],
+
   "aboutRole": "ФОТОГРАФ ИЗ МОСКВЫ",
   "heroText": "Репортаж, портреты, мероприятия и креативные съёмки для людей и брендов",
   "brand": "SONJASS_PHOTO",
   "city": "ФОТОГРАФ В МОСКВЕ",
+
   "aboutTitle": "ПРИВЕТ, Я СОФЬЯ",
-  "aboutImage": "/images/uploads/sjs02472-улучшено-ум.-шума.jpg",
+  "aboutImage": "/images/about.jpg",
+
   "love": "∞",
-  "instagram": "https://instagram.com/sonjass_photoo?igsh=MXQ5MG9iZXFyNGUxYQ%3D%3D&utm_source=qr",
+
+  "instagram": "https://instagram.com/sonjass_photoo",
+
   "years": "05",
+
   "aboutText": "Более 5 лет снимаю людей, события и истории. Работаю в сфере культуры, сотрудничаю с брендами, театрами, музыкантами и творческими проектами. Для меня важно поймать момент и передать настоящие эмоции — без лишней постановки.",
+
   "reviews": [
     {
       "text": "Софья умеет быть незаметной в нужный момент и при этом ловить именно те кадры, которые хочется сохранить.",
@@ -58,7 +66,7 @@
       "author": "Пресс-служба Министерства молодежи ХО"
     },
     {
-      "text": "Это просто афигенно! Я в приятном шоке от фотографий - вы смогли показать меня настоящей и очень красивой!",
+      "text": "Это просто афигенно! Я в приятном шоке от фотографий — вы смогли показать меня настоящей и очень красивой!",
       "author": "Клиент"
     },
     {
@@ -66,47 +74,44 @@
       "author": "Twins Kovl"
     },
     {
-      "text": "Соня, привет!\n\nБольшое тебе спасибо от меня, как от коллеги, за портретки амбассадорам. Своими я восхищена, даже больше - удивлена, что я «получилась» на них. \nИскренняя благодарность и лучи света посылаю тебе из Тулы!",
-      "author": "Клиент"
-    },
-    {
-      "text": "Партнер образовательной программы хочет забрать себе фотографии в пост о ее проведении! Спасибо большое!",
+      "text": "Большое тебе спасибо за портретки амбассадорам. Своими я восхищена!",
       "author": "Клиент"
     }
-  ],
-  "categories": [
+  ],  "categories": [
     {
       "name": "РЕПОРТАЖ",
       "slug": "reportage",
-      "image": "/images/uploads/sjs09869-улучшено-ум.-шума.jpg",
-      "cover": "/images/uploads/sjs09869-улучшено-ум.-шума.jpg"
+      "image": "/images/reportage.jpg",
+      "cover": "/images/reportage-1.jpg"
     },
     {
       "name": "ПОРТРЕТЫ",
       "slug": "portrait",
-      "image": "/images/uploads/sjs06418.jpg",
-      "cover": "/images/uploads/dsc04750.jpg"
+      "image": "/images/portraits.jpg",
+      "cover": "/images/portrait-1.jpg"
     },
     {
       "name": "СТУДИЯ",
       "slug": "studio",
-      "image": "/images/uploads/dsc00929.jpg",
-      "cover": "/images/uploads/dsc00929.jpg"
+      "image": "/images/studio.jpg",
+      "cover": "/images/studio-1.jpg"
     },
     {
       "name": "КРЕАТИВ",
       "slug": "creative",
-      "image": "/images/uploads/sjs05282.jpg",
-      "cover": "/images/uploads/sjs05282.jpg"
+      "image": "/images/creative.jpg",
+      "cover": "/images/creative-1.jpg"
     },
     {
       "name": "МЕРОПРИЯТИЯ",
       "slug": "events",
-      "image": "/images/uploads/sjs04489-улучшено-ум.-шума.jpg",
-      "cover": "/images/uploads/sjs04489-улучшено-ум.-шума.jpg"
+      "image": "/images/events.jpg",
+      "cover": "/images/event-1.jpg"
     }
   ],
+
   "email": "ouramanetgreen@gmail.com",
+
   "services": [
     {
       "number": "01",
@@ -129,6 +134,8 @@
       "text": "Концерты, фестивали, открытия и частные события."
     }
   ],
+
   "yearsLabel": "ЛЕТ В ФОТОГРАФИИ",
+
   "heroTitle": "ЭМОЦИИ В КАДРЕ"
 }
