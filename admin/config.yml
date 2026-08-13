@@ -1,181 +1,39 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "images/uploads"
+@@ -6,7 +6,7 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-
-  # =========================
-  # ОСНОВНОЙ САЙТ
-  # =========================
-
+  - label: "Сайт"
   - label: "Главная"
     name: "site"
     files:
-
       - label: "Основная информация"
-        name: "main"
-        file: "content/site.json"
-        format: "json"
-
-        fields:
-
-          - { label: "Имя / бренд", name: "brand", widget: "string" }
-          - { label: "Подпись под именем", name: "city", widget: "string" }
-
-          - { label: "Главный заголовок", name: "heroTitle", widget: "string" }
-          - { label: "Текст на главном экране", name: "heroText", widget: "text" }
-          - { label: "Главная фотография", name: "heroImage", widget: "image" }
-
-          - label: "Обо мне"
-            name: "about"
-            widget: "object"
-            fields:
-
-              - { label: "Заголовок", name: "aboutTitle", widget: "string" }
-              - { label: "Должность", name: "aboutRole", widget: "string" }
-              - { label: "Текст", name: "aboutText", widget: "text" }
-              - { label: "Фотография", name: "aboutImage", widget: "image" }
-
-          - label: "Показатели"
-            name: "stats"
-            widget: "object"
-            fields:
-
-              - { label: "Число лет", name: "years", widget: "string" }
-              - { label: "Подпись к годам", name: "yearsLabel", widget: "string" }
-              - { label: "Второй показатель", name: "love", widget: "string" }
-              - { label: "Подпись ко второму показателю", name: "loveLabel", widget: "string" }
-
-          - label: "Контакты"
-            name: "contacts"
-            widget: "object"
-            fields:
-
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Telegram", name: "telegram", widget: "string" }
-              - { label: "Instagram", name: "instagram", widget: "string" }
-
-          - label: "Услуги"
-            name: "services"
-            widget: "list"
-            fields:
-
-              - { label: "Номер", name: "number", widget: "string" }
+@@ -41,21 +41,22 @@ collections:
               - { label: "Название", name: "title", widget: "string" }
               - { label: "Описание", name: "text", widget: "text" }
 
-
-  # =========================
-  # ПОРТФОЛИО
-  # =========================
-
-  - label: "Портфолио"
-    name: "portfolio"
-    files:
-
-      # -------------------------
-      # РАЗДЕЛЫ
-      # -------------------------
-
-      - label: "Разделы портфолио"
-        name: "sections"
-        file: "content/portfolio.json"
-        format: "json"
-
-        fields:
-
-          - label: "Разделы"
-            name: "sections"
+          - label: "Категории"
+          - label: "Разделы портфолио"
+            name: "categories"
             widget: "list"
-
             fields:
-
+              - { label: "Название", name: "name", widget: "string" }
               - { label: "Название раздела", name: "name", widget: "string" }
+              - { label: "Код категории", name: "slug", widget: "string" }
+              - { label: "Фото", name: "image", widget: "image" }
+              - { label: "Обложка раздела", name: "image", widget: "image" }
 
-              - {
-                  label: "Код раздела",
-                  name: "slug",
-                  widget: "string",
-                  hint: "Например: weddings, portraits, events"
-                }
-
-              - {
-                  label: "Обложка раздела",
-                  name: "cover",
-                  widget: "image"
-                }
-
-
-      # -------------------------
-      # ФОТОГРАФИИ
-      # -------------------------
-
-      - label: "Все фотографии"
-        name: "photos"
-        file: "content/photos.json"
-        format: "json"
-
-        fields:
-
+          - label: "Работы"
           - label: "Фотографии"
-            name: "photos"
+            name: "works"
             widget: "list"
-
             fields:
-
-              - {
-                  label: "Фотография",
-                  name: "image",
-                  widget: "image"
-                }
-
-              - {
-                  label: "Раздел",
-                  name: "category",
-                  widget: "string",
-                  hint: "Укажи код раздела, например: portrait"
-                }
-
-              - {
-                  label: "Описание",
-                  name: "alt",
-                  widget: "string",
-                  required: false
-                }
-
-              - {
-                  label: "Показывать на главной",
-                  name: "featured",
-                  widget: "boolean",
-                  default: false,
-                  required: false
-                }
-
-
-  # =========================
-  # ОТЗЫВЫ
-  # =========================
-
-  - label: "Отзывы"
-    name: "reviews"
-    files:
-
-      - label: "Отзывы клиентов"
-        name: "reviews"
-        file: "content/reviews.json"
-        format: "json"
-
-        fields:
+              - { label: "Фото", name: "image", widget: "image" }
+              - { label: "Категория", name: "category", widget: "string" }
+              - { label: "Описание фото", name: "alt", widget: "string" }
+              - { label: "Фотография", name: "image", widget: "image" }
+              - { label: "Раздел", name: "category", widget: "string" }
+              - { label: "Описание фотографии", name: "alt", widget: "string", required: false }
+              - { label: "Показывать на главной", name: "featured", widget: "boolean", default: false, required: false }
 
           - label: "Отзывы"
             name: "reviews"
-            widget: "list"
-
-            fields:
-
-              - { label: "Текст", name: "text", widget: "text" }
-
-              - { label: "Автор", name: "author", widget: "string" }
