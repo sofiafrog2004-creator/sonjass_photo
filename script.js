@@ -46,7 +46,9 @@ async function loadSite(){
 
   // Фото на главной
 const featuredWorks = works.filter(w => w.featured).length
-  ? works.filter(w => w.featured)
+  ? works
+      .filter(w => w.featured)
+      .sort((a,b)=>(a.order || 99) - (b.order || 99))
   : works.slice(0,5);
 
 
