@@ -1,37 +1,70 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - label: "Сайт"
-  - label: "Главная"
     name: "site"
     files:
       - label: "Основная информация"
+        name: "main"
+        file: "content/site.json"
+        format: "json"
+
+        fields:
+          - { label: "Имя / бренд", name: "brand", widget: "string" }
+          - { label: "Подпись под именем", name: "city", widget: "string" }
+
+          - { label: "Главный заголовок", name: "heroTitle", widget: "string" }
+          - { label: "Текст на главном экране", name: "heroText", widget: "text" }
+          - { label: "Главная фотография", name: "heroImage", widget: "image" }
+
+          - { label: "Заголовок «Обо мне»", name: "aboutTitle", widget: "string" }
+          - { label: "Должность", name: "aboutRole", widget: "string" }
+          - { label: "Текст «Обо мне»", name: "aboutText", widget: "text" }
+          - { label: "Фото «Обо мне»", name: "aboutImage", widget: "image" }
+
+          - { label: "Число лет", name: "years", widget: "string" }
+          - { label: "Подпись к годам", name: "yearsLabel", widget: "string" }
+
+          - { label: "Второй показатель", name: "love", widget: "string" }
+          - { label: "Подпись ко второму показателю", name: "loveLabel", widget: "string" }
+
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telegram", name: "telegram", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+
+          - label: "Услуги"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Номер", name: "number", widget: "string" }
               - { label: "Название", name: "title", widget: "string" }
               - { label: "Описание", name: "text", widget: "text" }
 
           - label: "Категории"
-          - label: "Разделы портфолио"
             name: "categories"
             widget: "list"
             fields:
               - { label: "Название", name: "name", widget: "string" }
-              - { label: "Название раздела", name: "name", widget: "string" }
               - { label: "Код категории", name: "slug", widget: "string" }
               - { label: "Фото", name: "image", widget: "image" }
-              - { label: "Обложка раздела", name: "image", widget: "image" }
 
           - label: "Работы"
-          - label: "Фотографии"
             name: "works"
             widget: "list"
             fields:
               - { label: "Фото", name: "image", widget: "image" }
               - { label: "Категория", name: "category", widget: "string" }
               - { label: "Описание фото", name: "alt", widget: "string" }
-              - { label: "Фотография", name: "image", widget: "image" }
-              - { label: "Раздел", name: "category", widget: "string" }
-              - { label: "Описание фотографии", name: "alt", widget: "string", required: false }
-              - { label: "Показывать на главной", name: "featured", widget: "boolean", default: false, required: false }
+              - { label: "Показывать на главной", name: "featured", widget: "boolean", default: false }
 
           - label: "Отзывы"
             name: "reviews"
+            widget: "list"
+            fields:
+              - { label: "Текст", name: "text", widget: "text" }
+              - { label: "Автор", name: "author", widget: "string" }
