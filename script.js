@@ -1,212 +1,114 @@
 async function loadSite(){
 
-try {
-
-const res = await fetch('/content/site.json?t=' + Date.now());
-
-if(!res.ok){
-throw new Error('site.json не найден');
-}
-
+const res = await fetch("./content/site.json?t=" + Date.now());
 const d = await res.json();
-
 
 const $ = id => document.getElementById(id);
 
 
-// ======================
 // ОСНОВА
-// ======================
 
-$('brand').innerHTML =
-(d.brand || '').replace('_','<br>');
+if($("brand")) $("brand").innerHTML = d.brand.replace("_","<br>");
 
-$('city').textContent =
-d.city || '';
+if($("city")) $("city").textContent = d.city;
 
-$('heroTitle').innerHTML =
-(d.heroTitle || '')
-.replace(' ','<br>')
-.replace(' ','<br>');
+if($("heroTitle")){
+$("heroTitle").innerHTML = d.heroTitle.replaceAll(" ","<br>");
+}
 
-$('heroText').textContent =
-d.heroText || '';
+if($("heroText"))
+$("heroText").textContent=d.heroText;
 
-$('heroImage').src =
-d.heroImage || '';
+
+if($("heroImage"))
+$("heroImage").src=d.heroImage;
 
 
 
-$('aboutImage').src =
-d.aboutImage || '';
+// ABOUT
 
-$('aboutTitle').textContent =
-d.aboutTitle || '';
+if($("aboutImage"))
+$("aboutImage").src=d.aboutImage;
 
-$('aboutRole').textContent =
-d.aboutRole || '';
+if($("aboutTitle"))
+$("aboutTitle").textContent=d.aboutTitle;
 
-$('aboutText').textContent =
-d.aboutText || '';
+if($("aboutRole"))
+$("aboutRole").textContent=d.aboutRole;
 
-
-
-$('years').textContent =
-d.years || '';
-
-$('yearsLabel').textContent =
-d.yearsLabel || '';
-
-$('love').textContent =
-d.love || '';
-
-$('loveLabel').textContent =
-d.loveLabel || '';
+if($("aboutText"))
+$("aboutText").textContent=d.aboutText;
 
 
 
-// ======================
+// СТАТИСТИКА
+
+if($("years"))
+$("years").textContent=d.years;
+
+if($("yearsLabel"))
+$("yearsLabel").textContent=d.yearsLabel;
+
+if($("love"))
+$("love").textContent=d.love;
+
+if($("loveLabel"))
+$("loveLabel").textContent=d.loveLabel;
+
+
+
 // ФОТО
-// ======================
+
+const works=d.works || [];
 
 
-const works = d.works || [];
+const selected=document.getElementById("selectedGrid");
 
+if(selected){
 
+selected.innerHTML=works.map((w,i)=>`
 
-$('filmStrip').innerHTML =
-works.map(w=>`
-
+<button class="photo-card ${i%3===0?"tall":""}" data-full="${w.image}">
 <img src="${w.image}">
-
-`).join('');
-
-
-
-$('selectedGrid').innerHTML =
-works.map((w,i)=>`
-
-<button class="photo-card"
-data-full="${w.image}">
-
-<img src="${w.image}"
-alt="${w.alt || ''}">
-
 </button>
 
-`).join('');
+`).join("");
+
+}
 
 
 
-$('galleryGrid').innerHTML =
-works.map(w=>`
+const gallery=document.getElementById("galleryGrid");
+
+if(gallery){
+
+gallery.innerHTML=works.map(w=>`
 
 <button class="gallery-item"
 data-cat="${w.category}"
 data-full="${w.image}">
 
-<img src="${w.image}"
-alt="${w.alt || ''}">
+<img src="${w.image}">
 
 </button>
 
-`).join('');
+`).join("");
+
+}
 
 
 
-
-// ======================
-// КАТЕГОРИИ
-// ======================
-
-
-const categories =
-d.categories || [];
-
-
-$('categories').innerHTML =
-categories.map(c=>`
-
-<div class="category-card"
-data-filter="${c.slug}">
-
-<img src="${c.image}">
-
-<h3>${c.name}</h3>
-
-</div>
-
-`).join('');
-
-
-
-
-// ======================
-// УСЛУГИ
-// ======================
-
-
-$('servicesGrid').innerHTML =
-(d.services || [])
-.map(s=>`
-
-<article>
-
-<span>${s.number}</span>
-
-<h3>${s.title}</h3>
-
-<p>${s.text}</p>
-
-</article>
-
-`).join('');
-
-
-
-
-// ======================
-// ФИЛЬТРЫ
-// ======================
-
-
-$('filters').innerHTML =
-
-`
-<button class="active"
-data-gallery-filter="all">
-ВСЕ
-</button>
-`
-
-+
-
-categories.map(c=>`
-
-<button data-gallery-filter="${c.slug}">
-${c.name}
-</button>
-
-`).join('');
-
-
-
-
-// ======================
 // ОТЗЫВЫ
-// ======================
 
+const reviews=document.getElementById("reviewsGrid");
 
-$('reviewsGrid').innerHTML =
+if(reviews){
 
-(d.reviews || [])
-.map(r=>`
+reviews.innerHTML=(d.reviews || []).map(r=>`
 
 <article class="review">
 
-<div class="quote">
-“
-</div>
+<div class="quote">“</div>
 
 <blockquote>
 ${r.text}
@@ -218,208 +120,35 @@ ${r.text}
 
 </article>
 
-`).join('');
+`).join("");
+
+}
 
 
 
-
-// ======================
 // КОНТАКТЫ
-// ======================
 
+if($("email")){
 
-const email =
-document.getElementById('email');
-
-
-if(email){
-
-email.href =
-'mailto:' + d.email;
-
-email.textContent =
-d.email;
+$("email").href="mailto:"+d.email;
+$("email").textContent=d.email;
 
 }
 
 
-const telegram =
-document.getElementById('telegram');
-
-
-if(telegram){
-
-telegram.href =
-d.telegram;
-
+if($("telegram")){
+$("telegram").href=d.telegram;
 }
 
 
-
-const instagram =
-document.getElementById('instagram');
-
-
-if(instagram){
-
-instagram.href =
-d.instagram;
-
+if($("instagram")){
+$("instagram").href=d.instagram;
 }
-
-
-
-
-initInteractions();
-
-
-}
-
-catch(e){
-
-console.error(
-'Ошибка загрузки:',
-e
-);
-
-}
-
-}
-
-
-
-
-
-function initInteractions(){
-
-
-
-// фильтры
-
-document
-.querySelectorAll('[data-gallery-filter]')
-.forEach(btn=>{
-
-
-btn.onclick=()=>{
-
-
-document
-.querySelectorAll('[data-gallery-filter]')
-.forEach(b=>
-b.classList.remove('active')
-);
-
-
-btn.classList.add('active');
-
-
-const filter =
-btn.dataset.galleryFilter;
-
-
-
-document
-.querySelectorAll('.gallery-item')
-.forEach(item=>{
-
-
-item.style.display =
-filter==='all' ||
-item.dataset.cat===filter
-?
-''
-:
-'none';
-
-
-});
-
-
-};
-
-
-});
-
-
-
-
-// категории
-
-document
-.querySelectorAll('[data-filter]')
-.forEach(card=>{
-
-
-card.onclick=()=>{
-
-
-document
-.querySelector(
-`[data-gallery-filter="${card.dataset.filter}"]`
-)
-?.click();
-
-
-};
-
-
-});
-
-
-
-
-// lightbox
-
-
-const box =
-document.querySelector('#lightbox');
-
-const img =
-document.querySelector('#lightbox-img');
-
-
-
-document
-.querySelectorAll('[data-full]')
-.forEach(el=>{
-
-
-el.onclick=()=>{
-
-
-img.src =
-el.dataset.full;
-
-
-box.classList.add('open');
-
-document.body.style.overflow='hidden';
-
-
-};
-
-
-});
-
-
-
-document
-.querySelector('.lightbox-close')
-?.addEventListener('click',()=>{
-
-
-box.classList.remove('open');
-
-document.body.style.overflow='';
-
-
-});
 
 
 
 }
 
 
-
-loadSite();
+loadSite()
+.catch(e=>console.error(e));
