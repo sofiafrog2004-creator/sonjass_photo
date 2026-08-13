@@ -36,89 +36,83 @@ async function loadSite(){
 
 
 
-  // ==========================
-  // ФОТОГРАФИИ
-  // ==========================
+  
+ // ==========================
+// ФОТОГРАФИИ
+// ==========================
 
-  const works = d.works || [];
+const works = d.works || [];
 
 
+// Фото для главной
+// Показываются только отмеченные ⭐
+// Если ничего не отмечено — берём первые фото
 
-  // Фото на главной
 const featuredWorks = works.filter(w => w.featured).length
   ? works
       .filter(w => w.featured)
       .sort((a,b)=>(a.order || 99) - (b.order || 99))
-  : works.slice(0,5);
-
-
-  $('filmStrip').innerHTML = works
-    .slice(0,3)
-    .map(w => `
-      <img src="${w.image}" alt="${w.alt || ''}">
-    `)
-    .join('');
+  : works;
 
 
 
-  // ==========================
-  // КАТЕГОРИИ
-  // ==========================
+// Лента сверху
 
-  const categories = d.categories || [];
+$('filmStrip').innerHTML = works
+  .map(w => `
+    <img 
+      src="${w.image}" 
+      alt="${w.alt || ''}"
+    >
+  `)
+  .join('');
 
 
 
-  $('categories').innerHTML = categories
-    .map(c => `
 
-      <a 
-        class="category-card" 
-        href="#gallery" 
-        data-filter="${c.slug}"
+// Фото на главной
+
+$('selectedGrid').innerHTML = featuredWorks
+  .map((w,i)=>`
+
+    <button 
+      class="photo-card ${i===0 || i===4 ? 'tall' : ''}"
+      data-full="${w.image}"
+    >
+
+      <img 
+        src="${w.image}"
+        alt="${w.alt || ''}"
       >
 
-        <img 
-          src="${c.cover || c.image}" 
-          alt="${c.name}"
-        >
+    </button>
 
-        <span>${c.name}</span>
-
-        <b>→</b>
-
-      </a>
-
-    `)
-    .join('');
+  `)
+  .join('');
 
 
 
-  // ==========================
-  // ИЗБРАННЫЕ ФОТО
-  // ==========================
 
+// Галерея ВСЕХ фотографий
 
-  $('selectedGrid').innerHTML = featuredWorks
-    .map((w,i)=>`
+$('galleryGrid').innerHTML = works
+  .map(w=>`
 
-      <button 
-        class="photo-card ${i===0 || i===4 ? 'tall' : ''}"
-        data-full="${w.image}"
+    <button
+      class="gallery-item"
+      data-cat="${w.category}"
+      data-full="${w.image}"
+    >
+
+      <img
+        src="${w.image}"
+        alt="${w.alt || ''}"
       >
 
-        <img 
-          src="${w.image}" 
-          alt="${w.alt || ''}"
-        >
+    </button>
 
-      </button>
-
-    `)
-    .join('');
-
-
-
+  `)
+  .join('');
   // ==========================
   // УСЛУГИ
   // ==========================
