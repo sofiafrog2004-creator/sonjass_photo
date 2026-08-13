@@ -1,7 +1,7 @@
 async function loadSite(){
 
-  const res = await fetch('content/site.json?v=2', {
-    cache: 'no-store'
+  const res = await fetch('/content/site.json?version=' + Date.now(), {
+    cache:'no-store'
   });
 
   const d = await res.json();
@@ -9,16 +9,11 @@ async function loadSite(){
   const $ = id => document.getElementById(id);
 
 
-  // ==========================
-  // ОСНОВНАЯ ИНФОРМАЦИЯ
-  // ==========================
-
-  $('brand').innerHTML = d.brand.replace(' ', '<br>');
+  $('brand').innerHTML = d.brand.replace(' ','<br>');
   $('city').textContent = d.city;
 
-  $('heroTitle').innerHTML = d.heroTitle
-    .split(' ')
-    .join('<br>');
+  $('heroTitle').innerHTML =
+    d.heroTitle.split(' ').join('<br>');
 
   $('heroText').textContent = d.heroText;
 
@@ -26,61 +21,42 @@ async function loadSite(){
 
 
   $('aboutImage').src = d.aboutImage;
-
   $('aboutTitle').textContent = d.aboutTitle;
-
   $('aboutRole').textContent = d.aboutRole;
-
   $('aboutText').textContent = d.aboutText;
 
 
   $('years').textContent = d.years;
-
   $('yearsLabel').textContent = d.yearsLabel;
 
-
   $('love').textContent = d.love;
-
   $('loveLabel').textContent = d.loveLabel;
 
 
 
-  // ==========================
-  // РАБОТЫ
-  // ==========================
+  // =========================
+  // ФОТО
+  // =========================
 
   const works = d.works || [];
 
 
   $('filmStrip').innerHTML =
-    works.map(w => `
-      <img 
-        src="${w.image}"
-        alt="${w.alt || ''}"
-      >
+    works.map(w=>`
+      <img src="${w.image}">
     `).join('');
 
 
 
-  const featuredWorks =
-    works.filter(w => w.featured).length
-    ? works.filter(w => w.featured)
-    : works;
-
-
-
   $('selectedGrid').innerHTML =
-    featuredWorks.map((w,i)=>`
+    works.map(w=>`
 
-      <button
-        class="photo-card ${i===0 || i===4 ? 'tall':''}"
-        data-full="${w.image}"
-      >
+      <button class="photo-card"
+      data-full="${w.image}">
 
-        <img
-          src="${w.image}"
-          alt="${w.alt || ''}"
-        >
+        <img 
+        src="${w.image}"
+        alt="${w.alt || ''}">
 
       </button>
 
@@ -92,25 +68,25 @@ async function loadSite(){
     works.map(w=>`
 
       <button
-        class="gallery-item"
-        data-cat="${w.category}"
-        data-full="${w.image}"
-      >
+      class="gallery-item"
+      data-cat="${w.category}"
+      data-full="${w.image}">
 
-        <img
-          src="${w.image}"
-          alt="${w.alt || ''}"
-        >
+        <img 
+        src="${w.image}"
+        alt="${w.alt || ''}">
 
       </button>
 
-    `).join();
+    `).join('');
 
 
 
-  // ==========================
+
+  // =========================
   // КАТЕГОРИИ
-  // ==========================
+  // =========================
+
 
   const categories = d.categories || [];
 
@@ -118,106 +94,110 @@ async function loadSite(){
   $('categories').innerHTML =
     categories.map(c=>`
 
-      <article 
-        class="category-card"
-        data-filter="${c.slug}"
-      >
+      <article class="category-card"
+      data-filter="${c.slug}">
 
-        <img src="${c.image}" alt="${c.name}">
+        <img src="${c.image}">
 
         <h3>${c.name}</h3>
 
       </article>
 
-    `).join();
+    `).join('');
 
 
 
   $('filters').innerHTML =
-    `
-    <button 
-      class="active"
-      data-gallery-filter="all">
-      ВСЕ
-    </button>
-    `
-    +
-    categories.map(c=>`
 
-      <button
-        data-gallery-filter="${c.slug}">
-        ${c.name}
-      </button>
+  `<button class="active"
+  data-gallery-filter="all">
+  ВСЕ
+  </button>`
 
-    `).join();
+  +
 
+  categories.map(c=>`
+
+  <button data-gallery-filter="${c.slug}">
+  ${c.name}
+  </button>
+
+  `).join('');
 
 
-  // ==========================
+
+
+  // =========================
   // УСЛУГИ
-  // ==========================
+  // =========================
+
 
   $('servicesGrid').innerHTML =
-    (d.services || [])
-    .map(s=>`
+  (d.services || [])
+  .map(s=>`
 
-      <article>
+    <article>
 
-        <span>${s.number}</span>
+    <span>${s.number}</span>
 
-        <h3>${s.title}</h3>
+    <h3>${s.title}</h3>
 
-        <p>${s.text}</p>
+    <p>${s.text}</p>
 
-      </article>
+    </article>
 
-    `).join();
+  `).join('');
 
 
 
-  // ==========================
+
+  // =========================
   // ОТЗЫВЫ
-  // ==========================
+  // =========================
+
 
   $('reviewsGrid').innerHTML =
-    (d.reviews || [])
-    .map(r=>`
+  (d.reviews || [])
+  .map(r=>`
 
-      <article class="review">
+  <article class="review">
 
-        <div class="quote">“</div>
+    <div class="quote">“</div>
 
-        <blockquote>
-          ${r.text.replace(/\n/g,'<br>')}
-        </blockquote>
+    <blockquote>
+    ${r.text.replace(/\n/g,'<br>')}
+    </blockquote>
 
-        <p>
-          — ${r.author}
-        </p>
+    <p>
+    — ${r.author}
+    </p>
 
-      </article>
+  </article>
 
-    `).join();
+  `).join('');
 
 
 
-  // ==========================
+
+
+  // =========================
   // КОНТАКТЫ
-  // ==========================
+  // =========================
+
 
   $('email').href =
-    `mailto:${d.email}`;
+  `mailto:${d.email}`;
 
   $('email').textContent =
-    d.email;
+  d.email;
 
 
   $('telegram').href =
-    d.telegram;
+  d.telegram;
 
 
   $('instagram').href =
-    d.instagram;
+  d.instagram;
 
 
 
@@ -228,111 +208,94 @@ async function loadSite(){
 
 
 
-// ==========================
-// ИНТЕРАКТИВ
-// ==========================
 
 function initInteractions(){
 
 
-  const menu =
-    document.querySelector('.menu-btn');
-
-  const nav =
-    document.querySelector('#nav');
+document
+.querySelectorAll('[data-gallery-filter]')
+.forEach(btn=>{
 
 
-  menu?.addEventListener(
-    'click',
-    ()=>nav.classList.toggle('open')
-  );
+btn.onclick=function(){
 
 
-
-  document
-  .querySelectorAll('[data-gallery-filter]')
-  .forEach(btn=>{
-
-
-    btn.onclick = ()=>{
+document
+.querySelectorAll('[data-gallery-filter]')
+.forEach(b=>b.classList.remove('active'));
 
 
-      document
-      .querySelectorAll('[data-gallery-filter]')
-      .forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
 
 
-      btn.classList.add('active');
-
-
-      const filter =
-        btn.dataset.galleryFilter;
+let filter =
+btn.dataset.galleryFilter;
 
 
 
-      document
-      .querySelectorAll('.gallery-item')
-      .forEach(item=>{
+document
+.querySelectorAll('.gallery-item')
+.forEach(item=>{
 
 
-        item.style.display =
-          filter==="all" ||
-          item.dataset.cat===filter
-          ? ''
-          : 'none';
+item.style.display =
+filter==="all" ||
+item.dataset.cat===filter
+? ''
+: 'none';
 
 
-      });
+});
 
 
-    };
+};
 
 
-  });
-
-
-
-  const box =
-    document.querySelector('#lightbox');
-
-  const img =
-    document.querySelector('#lightbox-img');
+});
 
 
 
-  document
-  .querySelectorAll('[data-full]')
-  .forEach(item=>{
 
 
-    item.onclick=()=>{
-
-      img.src=item.dataset.full;
-
-      box.classList.add('open');
-
-      document.body.style.overflow='hidden';
-
-    };
+const box =
+document.querySelector('#lightbox');
 
 
-  });
+const img =
+document.querySelector('#lightbox-img');
 
 
 
-  document
-  .querySelector('.lightbox-close')
-  ?.addEventListener(
-    'click',
-    ()=>{
+document
+.querySelectorAll('[data-full]')
+.forEach(item=>{
 
-      box.classList.remove('open');
 
-      document.body.style.overflow='';
+item.onclick=()=>{
 
-    }
-  );
+img.src=item.dataset.full;
 
+box.classList.add('open');
+
+document.body.style.overflow='hidden';
+
+};
+
+
+});
+
+
+
+
+document
+.querySelector('.lightbox-close')
+?.addEventListener('click',()=>{
+
+box.classList.remove('open');
+
+document.body.style.overflow='';
+
+});
 
 
 }
@@ -341,9 +304,9 @@ function initInteractions(){
 
 
 loadSite()
-.catch(err=>{
-  console.error(
-    'Ошибка загрузки сайта:',
-    err
-  );
+.catch(e=>{
+console.error(
+"Ошибка:",
+e
+);
 });
