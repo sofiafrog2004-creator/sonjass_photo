@@ -6,7 +6,6 @@ collections:
     name: "site"
     files:
       - label: "Основная информация"
-@@ -41,21 +41,22 @@ collections:
               - { label: "Название", name: "title", widget: "string" }
               - { label: "Описание", name: "text", widget: "text" }
 
