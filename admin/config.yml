@@ -8,9 +8,6 @@ public_folder: "/images/uploads"
 
 publish_mode: simple
 
-site_url: https://sonjass-photo.pages.dev
-display_url: https://sonjass-photo.pages.dev
-
 
 collections:
   - label: "Сайт"
