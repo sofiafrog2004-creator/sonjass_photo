@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: sofiafrog2004-creator/sonjass_photo
+  name: test-repo
   branch: main
 
 media_folder: "images/uploads"
