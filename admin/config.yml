@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: main
+
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
@@ -8,7 +9,18 @@ publish_mode: simple
 
 site_url: https://sonjass-photo.pages.dev
 display_url: https://sonjass-photo.pages.dev
-logo_url: https://sonjass-photo.pages.dev/images/uploads/sjs01713-улучшено-ум.-шума.jpg
+
+collections:
+  - label: "Сайт"
+    name: "site"
+
+    files:
+      - label: "Основная информация"
+        name: "main"
+        file: "content/site.json"
+        format: json
+
+        fields:
 
 collections:
   - label: "Сайт"
