@@ -1,20 +1,23 @@
 backend:
-  name: test-repo
+  name: github
+  repo: sofiafrog2004-creator/sonjass_photo
   branch: main
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+publish_mode: simple
 
 collections:
   - label: "Сайт"
     name: "site"
 
     files:
+
       - label: "Основная информация"
         name: "main"
         file: "content/site.json"
-        format: "json"
+        format: json
 
         fields:
 
