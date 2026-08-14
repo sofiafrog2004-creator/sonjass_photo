@@ -10,6 +10,7 @@ publish_mode: simple
 site_url: https://sonjass-photo.pages.dev
 display_url: https://sonjass-photo.pages.dev
 
+
 collections:
   - label: "Сайт"
     name: "site"
@@ -22,39 +23,31 @@ collections:
 
         fields:
 
-collections:
-  - label: "Сайт"
-
-      - label: "Основная информация"
-        name: "main"
-        file: "content/site.json"
-        format: json
-
-        fields:
-
           - label: "Имя / бренд"
             name: "brand"
             widget: "string"
 
-          - label: "Подпись под именем"
+          - label: "Город"
             name: "city"
             widget: "string"
-
 
           - label: "Главный заголовок"
             name: "heroTitle"
             widget: "string"
 
-          - label: "Текст на главном экране"
+          - label: "Текст"
             name: "heroText"
             widget: "text"
 
-          - label: "Главная фотография"
+          - label: "Главное фото"
             name: "heroImage"
             widget: "image"
 
+          - label: "Фото обо мне"
+            name: "aboutImage"
+            widget: "image"
 
-          - label: "Заголовок «Обо мне»"
+          - label: "Заголовок обо мне"
             name: "aboutTitle"
             widget: "string"
 
@@ -62,149 +55,42 @@ collections:
             name: "aboutRole"
             widget: "string"
 
-          - label: "Текст «Обо мне»"
+          - label: "Описание"
             name: "aboutText"
             widget: "text"
 
-          - label: "Фото «Обо мне»"
-            name: "aboutImage"
-            widget: "image"
-
-
-          - label: "Число лет"
+          - label: "Лет в фотографии"
             name: "years"
             widget: "string"
 
-          - label: "Подпись к годам"
+          - label: "Подпись лет"
             name: "yearsLabel"
             widget: "string"
 
-          - label: "Второй показатель"
+          - label: "Любовь"
             name: "love"
             widget: "string"
 
-          - label: "Подпись ко второму показателю"
+          - label: "Подпись любви"
             name: "loveLabel"
             widget: "string"
-
-
-          - label: "Email"
-            name: "email"
-            widget: "string"
-
-          - label: "Telegram"
-            name: "telegram"
-            widget: "string"
-
-          - label: "Instagram"
-            name: "instagram"
-            widget: "string"
-
-
-
-          # УСЛУГИ
-
-          - label: "Услуги"
-            name: "services"
-            widget: "list"
-
-            fields:
-
-              - label: "Номер"
-                name: "number"
-                widget: "string"
-
-              - label: "Название"
-                name: "title"
-                widget: "string"
-
-              - label: "Описание"
-                name: "text"
-                widget: "text"
-
-
-
-          # КАТЕГОРИИ
-
-          - label: "Категории"
-            name: "categories"
-            widget: "list"
-
-            fields:
-
-              - label: "Название"
-                name: "name"
-                widget: "string"
-
-              - label: "Код категории"
-                name: "slug"
-                widget: "string"
-
-              - label: "Обложка раздела"
-                name: "cover"
-                widget: "image"
-
-
-
-          # РАБОТЫ
 
           - label: "Работы"
             name: "works"
             widget: "list"
-
             fields:
 
               - label: "Фото"
                 name: "image"
                 widget: "image"
 
-
               - label: "Категория"
                 name: "category"
-                widget: "select"
-
-                options:
-                  - label: "Репортаж"
-                    value: "reportage"
-
-                  - label: "Портреты"
-                    value: "portrait"
-
-                  - label: "Студия"
-                    value: "studio"
-
-                  - label: "Креатив"
-                    value: "creative"
-
-                  - label: "Мероприятия"
-                    value: "events"
-
-
-
-              - label: "Описание фото"
-                name: "alt"
                 widget: "string"
 
-
-
-              - label: "Показывать на главной"
-                name: "featured"
-                widget: "boolean"
-                default: false
-                required: false
-
-
-
-              - label: "Порядок на главной"
-                name: "order"
-                widget: "number"
-                default: 99
-                required: false
-
-
-
-
-          # ОТЗЫВЫ
+              - label: "Описание"
+                name: "alt"
+                widget: "string"
 
           - label: "Отзывы"
             name: "reviews"
